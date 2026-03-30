@@ -23,6 +23,6 @@ export class Home {
     new Enemy([4, 4]),
   ];
 
-  heroPosition = [0, 0];
+  heroPosition = [4, 0];
   size = 5;
 }

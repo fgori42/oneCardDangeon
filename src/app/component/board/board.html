@@ -3,8 +3,7 @@
     <div class="row">
       @for (cell of row; track $index; let cellIndex = $index) {
         <app-tail
-          [state]="getCellState(rowIndex, cellIndex)"
-          [content]="tailContent.free"
+          [content]="getCellState(rowIndex, cellIndex)"
         />
       }
     </div>

@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Hero } from '../../model/hero';
 import { Enemy } from '../../model/enemy';
 import { Tail } from '../tail/tail';
 import { TailState, TailContent } from '../../model/tail-enums';
+import { BoardService } from '../../service/board-service';
 
 interface Wall{
   x: number;
@@ -22,12 +23,15 @@ export class Board implements OnInit {
  @Input() heroPosition: number[] = [0, 0];
  @Input() maxSize: number = 5;
 
+ boardService = inject(BoardService);
+
   floor: number[][] = [];
   hero!: Hero;
 
   ngOnInit(): void {
     this.floor = Array.from({ length: this.maxSize }, () => Array(this.maxSize).fill(TailContent.free));
     this.hero = new Hero(this.heroPosition);
+    this.boardService.setHero(this.hero);
     const wallSet = new Set(this.walls.map(w => `${w.x},${w.y}`));
     const enemySet = new Set(this.enemies.map(e => `${e.position[0]},${e.position[1]}`));
 
@@ -43,9 +47,8 @@ export class Board implements OnInit {
       }
     }
   }
-  getCellState(i: number, j: number): TailState {
-  // per ora tutto free, qui ci metterai la logica di movimento/raggio
-    return TailState.free;
+  getCellState(i: number, j: number): TailContent {
+    return this.floor[i][j];
   }
   public get tailContent() { return TailContent; }
 }
