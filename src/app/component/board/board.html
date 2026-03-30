@@ -1,1 +1,12 @@
-<p>board works!</p>
+<div class="board">
+  @for (row of floor; track $index; let rowIndex = $index) {
+    <div class="row">
+      @for (cell of row; track $index; let cellIndex = $index) {
+        <app-tail
+          [state]="getCellState(rowIndex, cellIndex)"
+          [content]="tailContent.free"
+        />
+      }
+    </div>
+  }
+</div>

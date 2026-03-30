@@ -1,0 +1,7 @@
+
+<div class="tail" [ngClass]="{
+    'heroMovement': state === states.heroMovement,
+    'heroRange': state === states.heroRange,
+    'enemyMovement': state === states.enemyMovement,
+    'enemyRange': state === states.enemyRange
+}" [style.color]="color"></div>

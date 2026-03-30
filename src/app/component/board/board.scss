@@ -1,0 +1,11 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  background: rgb(92, 49, 14);
+  padding: 5vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}

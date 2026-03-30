@@ -1,0 +1,46 @@
+@keyframes pulse-opacity {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.tail{
+    position: relative;
+    width: 10vb;
+    height: 10vb;
+    background: burlywood;
+    &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; // Il click passa attraverso il velo
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  // Classi attivate dall'Enum
+  &.heroMovement::after {
+    background-color: rgba(0, 255, 255, 0.5); // Aqua
+    opacity: 1;
+    animation: pulse-opacity 1.5s infinite;
+  }
+
+  &.enemyMovement::after {
+    background-color: rgba(255, 0, 0, 0.5); // Rosso
+    opacity: 1;
+    animation: pulse-opacity 0.8s infinite; 
+  }
+}
+
+
+.wall{
+    width: 10vb;
+    height: 10vb;
+    background: rgb(80, 40, 2);
+}

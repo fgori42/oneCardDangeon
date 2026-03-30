@@ -8,6 +8,12 @@
     <main class="game-content">
     <div class="menu-box">
       <button class="btn-start">START GAME</button>
+      <app-board
+        [walls]="walls"
+        [enemies]="enemies"
+        [heroPosition]="heroPosition"
+        [maxSize]="size"
+      ></app-board>
     </div>
   </main>
 
